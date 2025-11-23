@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="transform.xsl"?>
+
+<Dormitories>
+	<Student id="001" status="resident">
+		<Name>
+			<Last>Іванов</Last>
+			<First>Петро</First>
+			<Patronymic>Сергійович</Patronymic>
+		</Name>
+		<Faculty>
+			<Name>Інформатики</Name>
+			<Department>Програмування</Department>
+			<Division>Мобільні технології</Division>
+		</Faculty>
+		<Chair>Кафедра алгоритмів</Chair>
+		<Course>2</Course>
+		<Residence>
+			<Address>вул. Лесі Українки, 10, кім. 12</Address>
+			<FromDate>2024-09-01</FromDate>
+			<ToDate>2025-06-30</ToDate>
+		</Residence>
+	</Student>
+
+	<Student id="002">
+		<Name>
+			<Last>Петренко</Last>
+			<First>Олена</First>
+			<Patronymic>Миколаївна</Patronymic>
+		</Name>
+		<Faculty>
+			<Name>Економіки</Name>
+			<Department>Бухгалтерія</Department>
+			<Division>Фінанси</Division>
+		</Faculty>
+		<Chair>Кафедра менеджменту</Chair>
+		<Course>3</Course>
+		<Residence>
+			<Address>просп. Свободи, 5, кім. 4</Address>
+			<FromDate>2025-02-01</FromDate>
+			<ToDate>2025-06-30</ToDate>
+		</Residence>
+	</Student>
+	
+	<Student id="003" status="commuter" scholarship="true">
+		<Name>
+			<Last>Коваль</Last>
+			<First>Інна</First>
+			<Patronymic>Олександрівна</Patronymic>
+		</Name>
+		<Faculty>
+			<Name>Фізики</Name>
+			<Department>Теоретична фізика</Department>
+			<Division>Компактні частинки</Division>
+		</Faculty>
+		<Chair>Кафедра фізики твердого тіла</Chair>
+		<Course>1</Course>
+		<Residence>
+			<Address>не проживає в гуртожитку</Address>
+			<FromDate/>
+			<ToDate/>
+		</Residence>
+	</Student>
+
+	<Student id="004" status="resident" room="210">
+		<Name>
+			<Last>Бондар</Last>
+			<First>Роман</First>
+			<Patronymic>Іванович</Patronymic>
+		</Name>
+		<Faculty>
+			<Name>Математики</Name>
+			<Department>Прикладна математика</Department>
+		</Faculty>
+		<Chair>Кафедра обчислювальної математики</Chair>
+		<Course>4</Course>
+		<Residence>
+			<Address>вул. Гагаріна, 3, кім. 210</Address>
+			<FromDate>2023-09-01</FromDate>
+			<ToDate>2024-06-30</ToDate>
+		</Residence>
+	</Student>
+
+</Dormitories>

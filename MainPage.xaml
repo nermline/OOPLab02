@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab02.MainPage">
+
+    <Grid Padding="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollView Grid.Column="1" Padding="10">
+            <Label x:Name="ResultLabel"
+                   Text="Результати завантаження та фільтру з'являться тут."
+                   LineBreakMode="WordWrap"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"/>
+        </ScrollView>
+
+        <ScrollView Grid.Column="0">
+            <VerticalStackLayout Padding="10, 10, 20, 10" Spacing="15">
+
+                <Button x:Name="LoadButton"
+                        Text="Завантажити з XML"
+                        Clicked="LoadButton_Clicked"
+                        FontSize="14"
+                        HeightRequest="40"/>
+                <Button x:Name="SaveButton"
+                        Text="Зберегти в HTML"
+                        Clicked="SaveButton_Clicked"
+                        FontSize="14"
+                        HeightRequest="40"/>
+                <Button x:Name="Clear"
+                        Text="Очистити"
+                        Clicked="Clear_Clicked"
+                        FontSize="14"
+                        HeightRequest="40"/>
+
+                <Picker x:Name="TypePicker"
+                        TextColor="White"
+                        FontSize="14"
+                        HeightRequest="40">
+                    <Picker.Items>
+                        <x:String>— Оберіть спосіб обробки —</x:String>
+                        <x:String>SAX API</x:String>
+                        <x:String>DOM API</x:String>
+                        <x:String>LINQ to XML</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Text="Фільтрувати за:" FontSize="14"/>
+
+                <Entry x:Name="Last_Name"
+                       Placeholder="Прізвище"
+                       TextChanged="OnFilterChanged"
+                       FontSize="14"
+                       HeightRequest="40"/>
+                <Entry x:Name="First_Name"
+                       Placeholder="Ім'я"
+                       TextChanged="OnFilterChanged"
+                       FontSize="14"
+                       HeightRequest="40"/>
+                <Entry x:Name="Patronymic"
+                       Placeholder="По-батькові"
+                       TextChanged="OnFilterChanged"
+                       FontSize="14"
+                       HeightRequest="40"/>
+                <Entry x:Name="Facuty"
+                       Placeholder="Факультет"
+                       TextChanged="OnFilterChanged"
+                       FontSize="14"
+                       HeightRequest="40"/>
+                <Entry x:Name="Course"
+                       Placeholder="Курс"
+                       TextChanged="OnFilterChanged"
+                       FontSize="14"
+                       HeightRequest="40"/>
+                <Entry x:Name="City"
+                       Placeholder="Місто"
+                       TextChanged="OnFilterChanged"
+                       FontSize="14"
+                       HeightRequest="40"/>
+
+                <HorizontalStackLayout Spacing="2" VerticalOptions="Center">
+                    <CheckBox x:Name="HasScholarship"
+                              CheckedChanged="OnFilterChanged"
+                              MinimumWidthRequest="20"/>
+                    <Label Text="Має стипендію" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
