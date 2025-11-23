@@ -119,6 +119,8 @@ namespace Lab02
             {
                 var filtered = _dataService.Filter(
                     Last_Name.Text,
+                    First_Name.Text,
+                    Patronymic.Text,
                     Facuty.Text,
                     Course.Text,
                     City.Text,

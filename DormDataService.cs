@@ -29,12 +29,18 @@ namespace Lab02
             return _allStudents;
         }
 
-        public List<Student> Filter(string lastName, string faculty, string course, string city, bool onlyScholarship)
+        public List<Student> Filter(string lastName, string firstName, string patronymic, string faculty, string course, string city, bool onlyScholarship)
         {
             var query = _allStudents.AsEnumerable();
 
             if (!string.IsNullOrWhiteSpace(lastName))
                 query = query.Where(s => !string.IsNullOrEmpty(s.LastName) && s.LastName.Contains(lastName, StringComparison.OrdinalIgnoreCase));
+
+            if (!string.IsNullOrWhiteSpace(firstName))
+                query = query.Where(s => !string.IsNullOrEmpty(s.FirstName) && s.FirstName.Contains(firstName, StringComparison.OrdinalIgnoreCase));
+
+            if (!string.IsNullOrWhiteSpace(patronymic))
+                query = query.Where(s => !string.IsNullOrEmpty(s.Patronymic) && s.Patronymic.Contains(patronymic, StringComparison.OrdinalIgnoreCase));
 
             if (!string.IsNullOrWhiteSpace(faculty))
                 query = query.Where(s => !string.IsNullOrEmpty(s.Faculty) && s.Faculty.Contains(faculty, StringComparison.OrdinalIgnoreCase));
