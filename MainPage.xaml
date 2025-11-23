@@ -76,7 +76,7 @@
                        FontSize="14"
                        HeightRequest="40"/>
                 <Entry x:Name="City"
-                       Placeholder="Місто"
+                       Placeholder="Адреса"
                        TextChanged="OnFilterChanged"
                        FontSize="14"
                        HeightRequest="40"/>
