@@ -56,7 +56,6 @@ namespace Lab02
 
         private async void SaveButton_Clicked(object sender, EventArgs e)
         {
-            // Перевірка, чи завантажено файл
             if (string.IsNullOrEmpty(_currentFilePath))
             {
                 await DisplayAlert("Помилка", "Спочатку завантажте файл XML", "OK");
@@ -65,25 +64,18 @@ namespace Lab02
 
             try
             {
-                // --- ВИПРАВЛЕННЯ 1: Надійний пошук XSL файлу ---
-                // Path.ChangeExtension автоматично замінює розширення на .xsl, 
-                // зберігаючи шлях до папки оригінального файлу.
                 string xslPath = Path.ChangeExtension(_currentFilePath, ".xsl");
 
-                // Додаткова перевірка перед початком роботи
                 if (!File.Exists(xslPath))
                 {
                     await DisplayAlert("Помилка", $"Не знайдено файл XSL!\nОчікувався тут:\n{xslPath}", "OK");
                     return;
                 }
 
-                // --- ВИПРАВЛЕННЯ 2: Введення шляху збереження ---
-                // Формуємо пропозицію за замовчуванням: РобочийСтіл\Ім'яФайлу.html
                 string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 string defaultFileName = Path.GetFileNameWithoutExtension(_currentFilePath) + ".html";
                 string defaultSavePath = Path.Combine(desktopPath, defaultFileName);
 
-                // Запитуємо у користувача шлях
                 string outputPath = await DisplayPromptAsync(
                     title: "Збереження файлу",
                     message: "Введіть повний шлях та назву файлу:",
@@ -92,11 +84,9 @@ namespace Lab02
                     cancel: "Скасувати",
                     keyboard: Keyboard.Text);
 
-                // Якщо користувач натиснув "Скасувати" або нічого не ввів
                 if (string.IsNullOrWhiteSpace(outputPath))
                     return;
 
-                // Виконуємо трансформацію
                 _dataService.SaveToHtml(_currentFilePath, xslPath, outputPath);
 
                 ResultLabel.Text = $"Файл збережено: {outputPath}";
