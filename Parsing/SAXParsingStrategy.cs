@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Xml;
+﻿using System.Xml;
 
 namespace Lab02.Parsing
 {
@@ -8,81 +7,72 @@ namespace Lab02.Parsing
         public List<Student> Parse(string filePath)
         {
             var students = new List<Student>();
-            Student currentStudent = null;
-            bool isInFaculty = false;
+            Student? currentStudent = null;
+            string currentElement = string.Empty;
 
-            using (var reader = XmlReader.Create(filePath))
+            using (XmlReader reader = XmlReader.Create(filePath))
             {
                 while (reader.Read())
                 {
-                    if (reader.NodeType == XmlNodeType.Element)
+                    switch (reader.NodeType)
                     {
-                        switch (reader.Name)
-                        {
-                            case "Student":
+                        case XmlNodeType.Element:
+                            currentElement = reader.Name;
+
+                            if (currentElement == "Student")
+                            {
                                 currentStudent = new Student();
-                                string scholarship = reader.GetAttribute("scholarship");
-                                currentStudent.HasScholarship = (scholarship == "true");
-                                break;
+                                currentStudent.Status = reader.GetAttribute("status") ?? string.Empty;
+                                currentStudent.Room = reader.GetAttribute("room");
+                                var scholarshipAttr = reader.GetAttribute("scholarship");
+                                currentStudent.HasScholarship = scholarshipAttr != null && scholarshipAttr.ToLower() == "true";
+                            }
+                            break;
 
-                            case "Faculty":
-                                isInFaculty = true;
-                                break;
-
-                            case "Last":
-                                if (currentStudent != null)
-                                    currentStudent.LastName = reader.ReadElementContentAsString();
-                                break;
-                            case "First":
-                                if (currentStudent != null)
-                                    currentStudent.FirstName = reader.ReadElementContentAsString();
-                                break;
-                            case "Patronymic":
-                                if (currentStudent != null)
-                                    currentStudent.Patronymic = reader.ReadElementContentAsString();
-                                break;
-
-                            case "Name":
-                                if (isInFaculty && currentStudent != null)
-                                {
-                                    currentStudent.Faculty = reader.ReadElementContentAsString();
-                                }
-                                break;
-
-                            case "Department":
-                                if (currentStudent != null)
-                                    currentStudent.Department = reader.ReadElementContentAsString();
-                                break;
-
-                            case "Course":
-                                if (currentStudent != null)
-                                    currentStudent.Course = reader.ReadElementContentAsString();
-                                break;
-
-                            case "Address":
-                                if (currentStudent != null)
-                                    currentStudent.City = reader.ReadElementContentAsString();
-                                break;
-                        }
-                    }
-                    else if (reader.NodeType == XmlNodeType.EndElement)
-                    {
-                        if (reader.Name == "Student")
-                        {
+                        case XmlNodeType.Text:
                             if (currentStudent != null)
+                            {
+                                switch (currentElement)
+                                {
+                                    case "Last": currentStudent.LastName = reader.Value; break;
+                                    case "First": currentStudent.FirstName = reader.Value; break;
+                                    case "Patronymic": currentStudent.Patronymic = reader.Value; break;
+                                    case "Faculty": break;
+                                    case "Name":
+                                        if (reader.Depth == 4) currentStudent.Faculty = reader.Value;
+                                        break;
+                                    case "Specialty": currentStudent.Specialty = reader.Value; break;
+                                    case "Chair": currentStudent.Chair = reader.Value; break;
+                                    case "Course":
+                                        if (int.TryParse(reader.Value, out int course))
+                                            currentStudent.Course = course;
+                                        break;
+                                    case "Address": currentStudent.Address = reader.Value; break;
+                                    case "FromDate":
+                                        if (!string.IsNullOrEmpty(reader.Value))
+                                            currentStudent.FromDate = DateOnly.ParseExact(reader.Value, "dd-MM-yyyy");
+                                        break;
+                                    case "ToDate":
+                                        if (!string.IsNullOrEmpty(reader.Value))
+                                            currentStudent.ToDate = DateOnly.ParseExact(reader.Value, "dd-MM-yyyy");
+                                        break;
+                                }
+                            }
+                            break;
+
+                        case XmlNodeType.EndElement:
+                            if (reader.Name == "Student" && currentStudent != null)
                             {
                                 students.Add(currentStudent);
                                 currentStudent = null;
                             }
-                        }
-                        else if (reader.Name == "Faculty")
-                        {
-                            isInFaculty = false;
-                        }
+                            break;
                     }
                 }
             }
+
             return students;
-        }   
+        }
     }
 }
+
