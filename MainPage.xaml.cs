@@ -109,7 +109,7 @@ namespace Lab02
 
                 if (string.IsNullOrWhiteSpace(outputPath)) return;
 
-                _dataService.SaveToHtml(_currentXmlPath, _currentXslPath, outputPath);
+                HtmlSaver.Transform(_currentXmlPath, _currentXslPath, outputPath);
 
                 ResultLabel.Text = $"Файл збережено: {outputPath}";
                 await DisplayAlertAsync("Успіх", $"HTML файл успішно створено за адресою:\n{outputPath}", "OK");

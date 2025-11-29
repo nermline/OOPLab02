@@ -1,4 +1,5 @@
-﻿using Lab02.Parsing;
+﻿
+using Lab02.Parsing;
 
 namespace Lab02
 {
@@ -80,11 +81,6 @@ namespace Lab02
         public void ClearData()
         {
             _allStudents.Clear();
-        }
-
-        public void SaveToHtml(string xmlPath, string xslPath, string outputPath)
-        {
-            HtmlSaver.Transform(xmlPath, xslPath, outputPath);
         }
     }
 }
