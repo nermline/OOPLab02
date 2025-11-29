@@ -1,5 +1,5 @@
 ﻿<Dormitories>
-	<Student status="resident" room="903/2">
+	<Student status="Проживає" room="903/2">
 		<Name>
 			<Last>Москалюк</Last>
 			<First>Ілля</First>
@@ -18,7 +18,7 @@
 		</Residence>
 	</Student>
 
-	<Student status="resident" room="201/3" scholarship="true">
+	<Student status="Проживає" room="201/3" scholarship="true">
 		<Name>
 			<Last>Дробязко</Last>
 			<First>Олександр</First>
@@ -37,7 +37,7 @@
 		</Residence>
 	</Student>
 	
-	<Student status="expectant" scholarship="false">
+	<Student status="Очікує" scholarship="false">
 		<Name>
 			<Last>Іванов</Last>
 			<First>Іван</First>
@@ -56,7 +56,7 @@
 		</Residence>
 	</Student>
 
-	<Student status="ex-resident" room="228/2">
+	<Student status="Виселено" room="228/2">
 		<Name>
 			<Last>Землерійка</Last>
 			<First>Анастасія</First>
