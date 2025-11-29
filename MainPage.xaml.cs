@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Maui.Storage;
-using Lab02.Parsing;
-using System.Text;
+﻿using Lab02.Parsing;
 
 namespace Lab02
 {

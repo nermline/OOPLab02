@@ -28,7 +28,7 @@ public partial class App : MauiWinUIApplication
     {
         base.OnLaunched(args);
 
-        var window = Microsoft.Maui.Controls.Application.Current.Windows.First().Handler.PlatformView as Microsoft.UI.Xaml.Window;
+        var window = Microsoft.Maui.Controls.Application.Current?.Windows.First().Handler.PlatformView as Microsoft.UI.Xaml.Window;
 
         if (window is not null)
         {
