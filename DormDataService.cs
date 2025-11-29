@@ -55,7 +55,8 @@ namespace Lab02
                 query = query.Where(s => !string.IsNullOrEmpty(s.Chair)
                                          && s.Chair.Contains(filter.Chair, StringComparison.OrdinalIgnoreCase));
 
-            query = query.Where(s => s.Course == filter.Course);
+            if (filter.Course > 0)
+                query = query.Where(s => s.Course == filter.Course);
 
             if (!string.IsNullOrWhiteSpace(filter.Address))
                 query = query.Where(s => !string.IsNullOrEmpty(s.Address)
@@ -67,13 +68,7 @@ namespace Lab02
 
             if (!string.IsNullOrWhiteSpace(filter.Status))
                 query = query.Where(s => !string.IsNullOrEmpty(s.Status)
-                                         && s.Status.Equals(filter.Status, StringComparison.OrdinalIgnoreCase));
-
-            if (filter.FromDate != null)
-                query = query.Where(s => s.FromDate != null && s.FromDate >= filter.FromDate);
-
-            if (filter.ToDate != null)
-                query = query.Where(s => s.ToDate != null && s.ToDate <= filter.ToDate);
+                                         && s.Status.Contains(filter.Status, StringComparison.OrdinalIgnoreCase));
 
             if (filter.HasScholarship)
                 query = query.Where(s => s.HasScholarship);
