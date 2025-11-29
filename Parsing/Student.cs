@@ -20,16 +20,6 @@ namespace Lab02.Parsing
         public DateOnly? ToDate { get; set; }
         public bool HasScholarship { get; set; }
 
-        private string FormatStatus()
-        {
-            switch (Status)
-            {
-                case "resident": return "Проживає";
-                case "ex-resident": return "Не проживає";
-                case "expectant": return "Очікує";
-                default: return "Невідомо";
-            }
-        }
         public override string ToString()
         {
             string info = $"{LastName} {FirstName} {Patronymic}\n" + 
@@ -40,7 +30,7 @@ namespace Lab02.Parsing
                 info += $"Кафедра: {Chair}\n";
             }
 
-            info += $"Статус: {FormatStatus()}\n" + $"Адреса: {Address}";
+            info += $"Статус: {Status}\n" + $"Адреса: {Address}";
 
             if (Room is not null)
             {
