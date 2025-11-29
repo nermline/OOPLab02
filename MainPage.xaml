@@ -20,9 +20,14 @@
         <ScrollView Grid.Column="0">
             <VerticalStackLayout Padding="10, 10, 20, 10" Spacing="15">
 
-                <Button x:Name="LoadButton"
+                <Button x:Name="LoadButtonXML"
                         Text="Завантажити з XML"
-                        Clicked="LoadButton_Clicked"
+                        Clicked="LoadButtonXML_Clicked"
+                        FontSize="14"
+                        HeightRequest="40"/>
+                <Button x:Name="LoadButtonXSL"
+                        Text="Завантажити XSL"
+                        Clicked="LoadButtonXSL_Clicked"
                         FontSize="14"
                         HeightRequest="40"/>
                 <Button x:Name="SaveButton"
@@ -30,7 +35,7 @@
                         Clicked="SaveButton_Clicked"
                         FontSize="14"
                         HeightRequest="40"/>
-                <Button x:Name="Clear"
+                <Button x:Name="ClearButton"
                         Text="Очистити"
                         Clicked="Clear_Clicked"
                         FontSize="14"
@@ -50,39 +55,67 @@
 
                 <Label Text="Фільтрувати за:" FontSize="14"/>
 
-                <Entry x:Name="Last_Name"
+                <Entry x:Name="LastNameEntry"
                        Placeholder="Прізвище"
                        TextChanged="OnFilterChanged"
                        FontSize="14"
                        HeightRequest="40"/>
-                <Entry x:Name="First_Name"
+                <Entry x:Name="FirstNameEntry"
                        Placeholder="Ім'я"
                        TextChanged="OnFilterChanged"
                        FontSize="14"
                        HeightRequest="40"/>
-                <Entry x:Name="Patronymic"
+                <Entry x:Name="PatronymicEntry"
                        Placeholder="По-батькові"
                        TextChanged="OnFilterChanged"
                        FontSize="14"
                        HeightRequest="40"/>
-                <Entry x:Name="Facuty"
+                <Entry x:Name="FacultyEntry"
                        Placeholder="Факультет"
                        TextChanged="OnFilterChanged"
                        FontSize="14"
                        HeightRequest="40"/>
-                <Entry x:Name="Course"
+                <Entry x:Name="SpecialtyEntry"
+                       Placeholder="Спеціальність"
+                       TextChanged="OnFilterChanged"
+                       FontSize="14"
+                       HeightRequest="40"/>
+                <Entry x:Name="ChairEntry"
+                       Placeholder="Кафедра"
+                       TextChanged="OnFilterChanged"
+                       FontSize="14"
+                       HeightRequest="40"/>
+                <Entry x:Name="CourseEntry"
                        Placeholder="Курс"
                        TextChanged="OnFilterChanged"
                        FontSize="14"
                        HeightRequest="40"/>
-                <Entry x:Name="City"
+                <Entry x:Name="AddressEntry"
                        Placeholder="Адреса"
                        TextChanged="OnFilterChanged"
                        FontSize="14"
                        HeightRequest="40"/>
+                <Entry x:Name="RoomEntry"
+                       Placeholder="Кімната"
+                       TextChanged="OnFilterChanged"
+                       FontSize="14"
+                       HeightRequest="40"/>
+
+                <Picker x:Name="StatusPicker"
+                        TextColor="White"
+                        FontSize="14"
+                        HeightRequest="40"
+                        SelectedIndexChanged="OnFilterChanged">
+                    <Picker.Items>
+                        <x:String>— Оберіть статус —</x:String>
+                        <x:String>Проживає</x:String>
+                        <x:String>Очікує</x:String>
+                        <x:String>Виселено</x:String>
+                    </Picker.Items>
+                </Picker>
 
                 <HorizontalStackLayout Spacing="2" VerticalOptions="Center">
-                    <CheckBox x:Name="HasScholarship"
+                    <CheckBox x:Name="HasScholarshipCheckBox"
                               CheckedChanged="OnFilterChanged"
                               MinimumWidthRequest="20"/>
                     <Label Text="Має стипендію" VerticalOptions="Center"/>
