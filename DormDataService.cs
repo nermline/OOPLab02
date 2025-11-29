@@ -1,5 +1,4 @@
-﻿
-using Lab02.Parsing;
+﻿using Lab02.Parsing;
 
 namespace Lab02
 {

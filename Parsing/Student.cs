@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Lab02.Parsing
+﻿namespace Lab02.Parsing
 {
     public class Student
     {

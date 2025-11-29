@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Lab02.Parsing
+﻿namespace Lab02.Parsing
 {
     public interface IParsingStrategy
     {
