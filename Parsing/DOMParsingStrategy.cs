@@ -19,13 +19,7 @@ namespace Lab02.Parsing
 
                     var statusAttr = node.Attributes?["status"]?.Value;
 
-                    switch (statusAttr)
-                    {
-                        case "resident": student.Status = "Проживає"; break;
-                        case "ex-resident": student.Status = "Не проживає"; break;
-                        case "expectant": student.Status = "Очікує"; break;
-                        default: student.Status = "Невідомо"; break;
-                    }
+                    student.Status = node.Attributes?["status"]?.Value ?? string.Empty;
 
                     var scholarship = node.Attributes?["scholarship"]?.Value;
                     student.HasScholarship = (scholarship is not null && scholarship == "true");
